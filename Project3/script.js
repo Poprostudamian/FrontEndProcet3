@@ -1,9 +1,9 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function computerPlay(choice = ["rock", "paper", "scissors"]){
     return choice[Math.floor(Math.random()*choice.length)];
 }
-
-    let humanScore = 0;
-    let computerScore = 0;
 
 function points(){
     if(humanScore > computerScore){
