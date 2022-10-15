@@ -1,59 +1,63 @@
 function computerPlay(choice = ["rock", "paper", "scissors"]){
-        return choice[Math.floor(Math.random()*choice.length)];
+    return choice[Math.floor(Math.random()*choice.length)];
 }
 
-//== "rock" && computerPlay()
 function playRound(playerSelection, computerSelection){
-//        if(toString(playerSelection) == computerSelection){
-//         console.log("Same move");
-//         }else if(toString(playerSelection) == "paper" && computerSelection == "rock"){
-//             console.log("Paper beats rock!!! You won");
-//         }else if(toString(playerSelection) == "scissors" && computerSelection == "rock"){
-//             console.log("Rock beats scissors!!! You lost");
-//         }else if(toString(playerSelection) == "paper" && computerSelection == "scissors"){
-//             console.log("Scissors beats paper!!! You lost");
-//         }else if(toString(playerSelection) == "rock" && computerSelection == "scissors"){
-//             console.log("Rock beats sccisors!!! You won");
-//         }else if(toString(playerSelection) == "scissors" && computerSelection == "paper"){
-//             console.log("Paper beats rock!!! You won");
-//         }else if(toString(playerSelection) == "scissors" && computerSelection == "paper"){
-//             console.log("Paper beats rock!!! You won");
-//         }else{
-//             console.log("Computer wins!!! You lost")
-//         }
-switch(toString(playerSelection)){
+    console.log({playerSelection});
+    console.log({computerSelection});
+
+    let humanScore = 0;
+    let computerScore = 0;
+
+        switch(playerSelection){
             case "rock":
-                if((toString(playerSelection) == "rock") && (computerSelection == "paper")){
+                if((playerSelection === "rock") && (computerSelection === "paper")){
                     console.log("Paper beats rock!!! You lost");
-                }else if(toString(playerSelection) == "rock" && computerSelection == "scissors"){
-                    console.log("Rock beats scissors!!! You lost");
-                }else if(toString(playerSelection) == "rock" && computerSelection == "rock"){
+                    computerScore++;
+                }else if(playerSelection === "rock" && computerSelection === "scissors"){
+                    console.log("Rock beats scissors!!! You won");
+                    humanScore++;
+                }else if(playerSelection === "rock" && computerSelection === "rock"){
                     console.log("Same move");
                 }
                 break;
             case "paper":
-                if(toString(playerSelection) == "paper" && computerSelection == "rock"){
+                if(playerSelection === "paper" && computerSelection === "rock"){
                     console.log("Paper beats rock!!! You won");
-                }else if(toString(playerSelection) == "paper" && computerSelection == "scissors"){
+                    humanScore++;
+                }else if(playerSelection === "paper" && computerSelection === "scissors"){
                     console.log("Scissors beats paper!!! You lost");
-                }else if(toString(playerSelection) == "paper" && computerSelection == "paper"){
+                    computerScore++;
+                }else if(playerSelection === "paper" && computerSelection === "paper"){
                     console.log("Same move");
                 }
                 break;
             case "scissors":
-                    if(toString(playerSelection) == "scissors" && computerSelection == "rock"){
+                    if(playerSelection === "scissors" && computerSelection === "rock"){
                         console.log("Rock beats scissors!!! You lost");
-                    }else if(toString(playerSelection) == "scissors" && computerSelection == "paper"){
+                        computerScore++;
+                    }else if(playerSelection === "scissors" && computerSelection === "paper"){
                         console.log("Scissors beats paper!!! You won");
-                    }else if(toString(playerSelection) == "scissors" && computerSelection == "scissors"){
+                        humanScore++;
+                    }else if(playerSelection === "scissors" && computerSelection === "scissors"){
                         console.log("Same move");
                     }
                 break;
             default:
                 console.log("Error");
+                break;
         }
+        console.log({humanScore});
+        console.log({computerScore});
+    }
+
+function game(){
+    for(let i = 0; i < 5; i++){
+            playRound(playerSelection, computerSelection);
+    }  
 }
 
-const playerSelection = prompt(("Rock? Paper? Scissors?").toLowerCase());
+const playerSelection = prompt("Rock? Paper? Scissors?").toLowerCase();
 const computerSelection = computerPlay();
-playRound(playerSelection, computerSelection);
+// playRound(playerSelection, computerSelection);
+game();
